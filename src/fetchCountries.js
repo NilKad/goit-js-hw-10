@@ -7,25 +7,25 @@ export default function fetchCountries(name) {
   // console.log(`${url}/${name}/?fields=${option}`);
   // const ret = fetch(`${url}`);
 
-  name = name.trim();
-  if (name === '') {
-    return;
-  }
+  // name = name.trim();
+  // if (name === '') {
+  //   return;
+  // }
 
   const fetchCountresName = name => {
     return fetch(`${url}/name/${name}?fields=${option}`).then(response => {
-      console.log('resonnse: ', response);
+      // console.log('resonnse: ', response);
       if (response.ok) {
         return response.json();
       }
-      console.log(`Error responsive ${response.name}`);
+      // console.log(`Error responsive ${response.name}`);
       throw SyntaxError(`${response.statusText}: ${response.status}`);
     });
   };
 
   return fetchCountresName(name)
     .then(data => {
-      console.log('Data Out: ', data);
+      // console.log('Data Out: ', data);
       return data;
     })
     .catch(error => {
