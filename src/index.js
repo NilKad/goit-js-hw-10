@@ -98,11 +98,26 @@ const keyClickfun = e => {
   }
   console.log(e.code);
 
-  if (!(e.code === 'Space' || e.code === 'Enter')) {
+  const keyCode = ['Space', 'Enter', 'ArrowUp', 'ArrowDown'];
+  if (!keyCode.includes(e.code)) {
     return;
   }
+
+  if (e.code === 'Space' || e.code === 'Enter') {
+    onListClickRender(document.activeElement.dataset.index);
+  }
+  if (e.code === 'ArrowDown' && document.activeElement.nextSibling) {
+    document.activeElement.nextSibling.focus();
+    return;
+  }
+
+  if (e.code === 'ArrowUp' && document.activeElement.previousSibling) {
+    document.activeElement.previousSibling.focus();
+    return;
+  }
+
   // onListClick(document.activeElement.dataset.index);
-  onListClickRender(document.activeElement.dataset.index);
+  return;
 };
 
 const onListClick = e => {
