@@ -27,13 +27,14 @@ const prepareArray = item => {
   };
 };
 
-const markupBriefCardTpl = ({ flags, nameCommon }) =>
-  `<li class="country-list__item">
+const markupBriefCardTpl = ({ nameCommon, flags }, index, array) =>
+  `<li class="country-list__item" tabindex="0">
     <img
       src="${flags}"
-      alt="${nameCommon}"
+      alt="${nameCommon}  ${index}"
       class="country-list__svg"
       width="25"
+      
     />
     <p class="country-list__text">${nameCommon}</p>
   </li>`;

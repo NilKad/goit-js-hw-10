@@ -37,8 +37,16 @@ img {
 .country-list__item {
   display: flex;
   align-items: center;
-  margin-bottom: 7px;
+  /* margin-bottom: 7px; */
+  padding: 7px;
+  max-width: 320px;
+  width: 200px;
   /* height: 30px; */
+}
+
+.country-list__item:hover,
+.country-list__item:focus {
+  background-color: lightgray;
 }
 .country-list__svg {
   margin-right: 7px;

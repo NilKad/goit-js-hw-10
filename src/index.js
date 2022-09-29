@@ -53,9 +53,16 @@ const renderArray = items => {
 
   if (items.length === 1) {
     refs.info.innerHTML = rend;
+    refs.list.removeEventListener('click', onListClick);
+    // refs.list.removeEventListener('focus', onFocus);
+
     return;
   }
   refs.list.innerHTML = rend;
+  refs.list.addEventListener('click', onListClick);
+  // refs.list.addEventListener('focusin', onfocus);
+
+  // console.log(refs.list);
 };
 
 const renderClear = () => {
@@ -63,4 +70,14 @@ const renderClear = () => {
   refs.info.innerHTML = '';
 };
 
+const onListClick = e => {
+  console.log(e.target);
+  console.dir(e.target);
+};
+
+const onFocus = e => {
+  console.log('Focus: ', e.target);
+};
 refs.search.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
+// document.body.addEventListener('click', e => console.log(e.target));
+// document.body.addEventListener('click', console.log('CLICK'));
