@@ -19,6 +19,7 @@ const refs = {
 };
 
 refs.search.focus();
+
 const onInputChange = e => {
   // console.log(e.target.value);
   searchString = e.target.value.trim();
@@ -45,7 +46,11 @@ const onInputChange = e => {
 
 const renderArray = fetchArray => {
   // console.log('fetchArray: ', fetchArray);
-  renderArrayItems = fetchArray;
+  renderArrayItems = fetchArray.sort((a, b) =>
+    a.name.common.localeCompare(b.name.common)
+  );
+  // console.log('renderArrayItems: ', renderArrayItems);
+
   // const renderArrayItems = fetchArray.filter(e =>
   //   e.name.common.toLowerCase().includes(searchString.toLowerCase())
   // );
@@ -99,9 +104,13 @@ const onListClick = e => {
         : e.target.parentElement;
   }
   const onClickListIndex = targetItem.dataset.index;
-  // console.log(onClickListIndex);
+  // console.log('onClickListIndex', onClickListIndex);
   refs.search.value = renderArrayItems[onClickListIndex].name.common;
-
+  // console.log(
+  //   'renderArrayItems[onClickListIndex].name.common',
+  //   renderArrayItems[onClickListIndex].name.common
+  // );
+  // console.log('renderArrayItems: ', renderArrayItems);
   // console.log('renderArrayItems: ', renderArrayItems);
 
   renderingHTML([renderArrayItems[onClickListIndex]]);

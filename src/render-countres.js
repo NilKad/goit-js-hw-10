@@ -1,8 +1,8 @@
 export default function markupArrya(items) {
   // console.log('items: ', items);
-  const newItems = items
-    .map(prepareArray)
-    .sort((a, b) => a.nameCommon.localeCompare(b.nameCommon));
+  const newItems = items.map(prepareArray);
+  // .sort((a, b) => a.nameCommon.localeCompare(b.nameCommon));
+
   // console.log(sortArray(newItems));
   // console.log('newItems: ', newItems);
 
