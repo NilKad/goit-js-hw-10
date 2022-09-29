@@ -6,7 +6,7 @@ export default function fetchCountries(name) {
   const option = ['name', 'capital', 'population', 'flags', 'languages'];
 
   const fetchCountresName = name => {
-    return fetch(`${url}/name/${name}?fields=${option}`).then(response => {
+    return fetch(`${url}/name/${name}/?fields=${option}`).then(response => {
       // console.log('resonnse: ', response);
       if (response.ok) {
         return response.json();

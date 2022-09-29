@@ -8,6 +8,7 @@ import 'notiflix/dist/notiflix-3.2.5.min';
 const notify = Notiflix.Notify;
 
 const DEBOUNCE_DELAY = 300;
+let searchString = null;
 
 const refs = {
   search: document.querySelector('#search-box'),
@@ -17,7 +18,7 @@ const refs = {
 
 const onInputChange = e => {
   // console.log(e.target.value);
-  const searchString = e.target.value.trim();
+  searchString = e.target.value.trim();
 
   if (searchString.length === 0) {
     renderClear();
@@ -39,19 +40,21 @@ const onInputChange = e => {
     });
 };
 
-const renderArray = items => {
-  // markupArray;
-  if (items.length > 10) {
-    //
+const renderArray = fetchArray => {
+  console.log('fetchArray: ', fetchArray);
+  const newArray = fetchArray.filter(e =>
+    e.name.common.toLowerCase().includes(searchString.toLowerCase())
+  );
+  if (newArray.length > 10) {
     notify.info('Too many matches found. Please enter a more specific name.');
     renderClear();
     return;
   }
 
-  const rend = markupArray(items);
+  const rend = markupArray(newArray);
   renderClear();
 
-  if (items.length === 1) {
+  if (newArray.length === 1) {
     refs.info.innerHTML = rend;
     refs.list.removeEventListener('click', onListClick);
     // refs.list.removeEventListener('focus', onFocus);
