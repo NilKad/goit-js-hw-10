@@ -70,14 +70,15 @@ const renderingHTML = renderArrayItems => {
   if (renderArrayItems.length === 1) {
     refs.info.innerHTML = rend;
     refs.list.removeEventListener('click', onListClick);
+    document.addEventListener('keydown', keyClickfun);
+
     // refs.list.removeEventListener('focus', onFocus);
 
     return;
   }
   refs.list.innerHTML = rend;
   refs.list.addEventListener('click', onListClick);
-  refs.search.focus();
-
+  document.addEventListener('keydown', keyClickfun);
   // refs.list.addEventListener('focusin', onfocus);
 
   // console.log(refs.list);
@@ -88,11 +89,33 @@ const renderClear = () => {
   refs.info.innerHTML = '';
 };
 
+const keyClickfun = e => {
+  console.log(document.activeElement);
+  console.dir(document.activeElement);
+
+  if (document.activeElement.className !== 'country-list__item') {
+    return;
+  }
+  console.log(e.code);
+
+  if (!(e.code === 'Space' || e.code === 'Enter')) {
+    return;
+  }
+  // onListClick(document.activeElement.dataset.index);
+  onListClickRender(document.activeElement.dataset.index);
+};
+
 const onListClick = e => {
+  const onClickListIndex = onListClickFindTarget(e);
+
+  onListClickRender(onClickListIndex);
+  // renderingHTML([renderArrayItems[onClickListIndex]]);
+  // // console.log('===============================');
+  // refs.search.value = renderArrayItems[onClickListIndex].name.common;
+};
+
+const onListClickFindTarget = e => {
   const listItem = document.querySelector('.country-list__item');
-  // console.log('e: ', e);
-  // console.log('e.target log: ', e.target);
-  // console.dir('e.target dir: ', e.target);
   let targetItem = null;
   if (
     e.target.className == listItem.className ||
@@ -104,17 +127,13 @@ const onListClick = e => {
         : e.target.parentElement;
   }
   const onClickListIndex = targetItem.dataset.index;
-  // console.log('onClickListIndex', onClickListIndex);
-  refs.search.value = renderArrayItems[onClickListIndex].name.common;
-  // console.log(
-  //   'renderArrayItems[onClickListIndex].name.common',
-  //   renderArrayItems[onClickListIndex].name.common
-  // );
-  // console.log('renderArrayItems: ', renderArrayItems);
-  // console.log('renderArrayItems: ', renderArrayItems);
+  return onClickListIndex;
+};
 
+const onListClickRender = onClickListIndex => {
   renderingHTML([renderArrayItems[onClickListIndex]]);
   // console.log('===============================');
+  refs.search.value = renderArrayItems[onClickListIndex].name.common;
 };
 
 const onFocus = e => {
