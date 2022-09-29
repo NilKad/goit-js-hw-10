@@ -14,6 +14,7 @@ const refs = {
   search: document.querySelector('#search-box'),
   list: document.querySelector('.country-list'),
   info: document.querySelector('.country-info'),
+  listItem: document.querySelector('.country-list__item'),
 };
 
 const onInputChange = e => {
@@ -42,10 +43,10 @@ const onInputChange = e => {
 
 const renderArray = fetchArray => {
   console.log('fetchArray: ', fetchArray);
-  // const newArray = fetchArray;
-  const newArray = fetchArray.filter(e =>
-    e.name.common.toLowerCase().includes(searchString.toLowerCase())
-  );
+  const newArray = fetchArray;
+  // const newArray = fetchArray.filter(e =>
+  //   e.name.common.toLowerCase().includes(searchString.toLowerCase())
+  // );
   if (newArray.length > 10) {
     notify.info('Too many matches found. Please enter a more specific name.');
     renderClear();
@@ -75,8 +76,18 @@ const renderClear = () => {
 };
 
 const onListClick = e => {
-  console.log(e.target);
-  console.dir(e.target);
+  // console.log('e: ', e);
+  // console.log('e.target log: ', e.target);
+  // console.dir('e.target dir: ', e.target);
+  // console.log('e.currentTarget log: ', e.currentTarget);
+  // console.dir('e.currentTarget dir: ', e.currentTarget);
+  // console.log('e.currentTarget log: ', e.currentTarget);
+
+  console.log('===============================');
+
+  // console.log('ParrentElrment: ', e.currenTarget.chieldNode);
+
+  // console.log(e.currentTarget());
 };
 
 const onFocus = e => {

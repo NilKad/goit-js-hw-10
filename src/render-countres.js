@@ -4,7 +4,6 @@ export default function markupArrya(items) {
     .map(prepareArray)
     .sort((a, b) => a.nameCommon.localeCompare(b.nameCommon));
   // console.log(sortArray(newItems));
-  // .sort((a, b) => a.nameCommon - b.nameCommon);
   // console.log('newItems: ', newItems);
 
   if (newItems.length === 1) {
@@ -34,6 +33,7 @@ const markupBriefCardTpl = ({ nameCommon, flags }, index, array) =>
       alt="${nameCommon}  ${index}"
       class="country-list__svg"
       width="25"
+      data-index="${index}"
       
     />
     <p class="country-list__text">${nameCommon}</p>
@@ -54,21 +54,40 @@ const markupDetailCardTpl = ({
         />
         <p class="country-info__titles-text">${nameCommon}</p>
       </div>
-      <ul class="country-info__list">
-        <li class="country-info__item">
           <p><span class="country-info__item-title">Capital: </span>${capital}</p>
-          <p>
-        </li>
-        <li class="country-info__item">
-        <span class="country-info__item-title">Population: </span>${population.toLocaleString(
-          'ru-RU'
-        )}
+          <p><span class="country-info__item-title">Population: </span>${population.toLocaleString(
+            'ru-RU'
+          )}
           </p>
-        </li class="country-info__item">
-        <li>
           <p>
             <span class="country-info__item-title">Languages: </span
-            >${languages}
-          </p>
-        </li>
-      </ul>`;
+            // >${languages}
+          </p>`;
+
+// `<div class="country-info__title">
+//   <img
+//     src="${flags}"
+//     alt="${nameCommon}"
+//     class="country-info__svg"
+//     width="25"
+//   />
+//   <p class="country-info__titles-text">${nameCommon}</p>
+// </div>
+// <ul class="country-info__list">
+//   <li class="country-info__item">
+//     <p><span class="country-info__item-title">Capital: </span>${capital}</p>
+//     <p>
+//   </li>
+//   <li class="country-info__item">
+//   <span class="country-info__item-title">Population: </span>${population.toLocaleString(
+//     'ru-RU'
+//   )}
+//     </p>
+//   </li class="country-info__item">
+//   <li>
+//     <p>
+//       <span class="country-info__item-title">Languages: </span
+//       >${languages}
+//     </p>
+//   </li>
+// </ul>`;
