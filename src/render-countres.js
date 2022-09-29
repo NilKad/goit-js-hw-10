@@ -1,7 +1,11 @@
 export default function markupArrya(items) {
-  console.log('items: ', items);
-  const newItems = items.map(prepareArray);
-  console.log('newItems: ', newItems);
+  // console.log('items: ', items);
+  const newItems = items
+    .map(prepareArray)
+    .sort((a, b) => a.nameCommon.localeCompare(b.nameCommon));
+  // console.log(sortArray(newItems));
+  // .sort((a, b) => a.nameCommon - b.nameCommon);
+  // console.log('newItems: ', newItems);
 
   if (newItems.length === 1) {
     return markupDetailCard(newItems);
