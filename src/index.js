@@ -12,7 +12,7 @@ const DEBOUNCE_DELAY = 300;
 const refs = {
   search: document.querySelector('#search-box'),
   list: document.querySelector('.country-list'),
-  info: document.querySelector('.country-list'),
+  info: document.querySelector('.country-info'),
 };
 
 const onInputChange = e => {
@@ -47,9 +47,14 @@ const renderArray = items => {
     renderClear();
     return;
   }
-  // if ()
+
   const rend = markupArray(items);
-  // console.log(rend);
+  renderClear();
+
+  if (items.length === 1) {
+    refs.info.innerHTML = rend;
+    return;
+  }
   refs.list.innerHTML = rend;
 };
 
