@@ -42,6 +42,7 @@ const onInputChange = e => {
 
 const renderArray = fetchArray => {
   console.log('fetchArray: ', fetchArray);
+  // const newArray = fetchArray;
   const newArray = fetchArray.filter(e =>
     e.name.common.toLowerCase().includes(searchString.toLowerCase())
   );

@@ -58,10 +58,14 @@ const markupDetailCardTpl = ({
         <li class="country-info__item">
           <p><span class="country-info__item-title">Capital: </span>${capital}</p>
           <p>
-            <span class="country-info__item-title">Population: </span>${population.toLocaleString(
-              'ru-RU'
-            )}
+        </li>
+        <li class="country-info__item">
+        <span class="country-info__item-title">Population: </span>${population.toLocaleString(
+          'ru-RU'
+        )}
           </p>
+        </li class="country-info__item">
+        <li>
           <p>
             <span class="country-info__item-title">Languages: </span
             >${languages}
