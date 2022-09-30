@@ -70,7 +70,7 @@ const renderingHTML = renderArrayItems => {
   if (renderArrayItems.length === 1) {
     refs.info.innerHTML = rend;
     refs.list.removeEventListener('click', onListClick);
-    document.addEventListener('keydown', keyClickfun);
+    document.removeEventListener('keydown', keyClickfun);
 
     // refs.list.removeEventListener('focus', onFocus);
 
