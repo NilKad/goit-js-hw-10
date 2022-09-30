@@ -121,6 +121,10 @@ const keyClickfun = e => {
 };
 
 const onListClick = e => {
+  if (refs.list === e.target) {
+    return;
+  }
+
   const onClickListIndex = onListClickFindTarget(e);
 
   onListClickRender(onClickListIndex);
